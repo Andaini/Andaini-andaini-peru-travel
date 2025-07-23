@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andaini | Authentic Peru Travel - Sacred Journeys Through the Andes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23c4a484" width="1200" height="800"/><path fill="%23d4b494" d="M0 400l50-33.3c50-33.4 150-100 250-100s200 66.6 250 100l50 33.3v400H0z"/><path fill="%23a67c52" d="M1200 500l-50-25c-50-25-150-75-250-75s-200 50-250 75l-50 25v300h600z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, #c4a484, #d4b494);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .packages {
+            background: white;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .package-image {
+            height: 250px;
+            background: linear-gradient(45deg, #c4a484, #d4b494);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .package-content {
+            padding: 30px;
+        }
+
+        .package-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .package-price {
+            font-size: 1.8rem;
+            color: #e74c3c;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .package-features li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .package-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .interactive-builder {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+
+        .builder-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .builder-option {
+            background: rgba(255,255,255,0.1);
+            padding: 40px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .builder-option:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        .builder-option h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .contact {
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #e74c3c;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">Andaini</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#builder">Custom Trips</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sacred Journeys Through Peru</h1>
+            <p>Experience Peru through the spirit of <em>Ayni</em> - sacred reciprocity. Authentic adventures crafted with deep respect for Andean culture and the communities that call these mountains home.</p>
+            <a href="#contact" class="cta-button">Start Your Adventure</a>
+        </div>
+    </section>
+
+    <section id="about" class="about section">
+        <div class="container">
+            <h2 class="section-title">Andaini - Where Sacred Reciprocity Meets Adventure</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p><strong>Andaini</strong> is more than a name - it's our philosophy. Blending "Andes" with "Ayni" (the Quechua word for sacred reciprocity), we believe travel should be a genuine exchange that honors both the traveler's journey and the communities we visit.</p>
+                    
+                    <p>With years of living and working in Peru, I've built relationships rooted in mutual respect and authentic connection. Every journey we craft follows the principle of <em>Ayni</em> - ensuring that your adventure gives back to the places and people that make it possible.</p>
+                    
+                    <p>From the mystical energy of Machu Picchu to the living wisdom of Amazon communities, we don't just show you Peru - we help you become part of its story through meaningful, respectful exchange.</p>
+                    
+                    <p><strong>This is travel as it should be:</strong> transformative for you, beneficial for communities, and honoring the sacred landscapes we're privileged to explore.</p>
+                </div>
+                <div class="about-image">
+                    <div>
+                        <h4><em>Ayni</em> - Sacred Reciprocity</h4>
+                        <p>Honoring the Andes<br>Respecting communities<br>Transforming travelers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="packages section">
+        <div class="container">
+            <h2 class="section-title">Signature Peru Experiences</h2>
+            <p class="section-subtitle">Choose from our carefully crafted packages, or let us create something completely unique for you</p>
+            
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-image">
+                        <div>Classic Machu Picchu<br>& Sacred Valley</div>
+                    </div>
+                    <div class="package-content">
+                        <h3 class="package-title">The Essential Peru</h3>
+                        <div class="package-price">From $1,299</div>
+                        <ul class="package-features">
+                            <li>7 days / 6 nights</li>
+                            <li>Machu Picchu sunrise tour</li>
+                            <li>Sacred Valley exploration</li>
+                            <li>Cusco colonial heritage</li>
+                            <li>Local market experiences</li>
+                            <li>Professional local guide</li>
+                        </ul>
+                        <a href="#contact" class="cta-button">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-image">
+                        <div>Amazon Rainforest<br>& Wildlife Adventure</div>
+                    </div>
+                    <div class="package-content">
+                        <h3 class="package-title">Amazon Explorer</h3>
+                        <div class="package-price">From $1,599</div>
+                        <ul class="package-features">
+                            <li>5 days / 4 nights</li>
+                            <li>Eco-lodge accommodation</li>
+                            <li>Wildlife spotting tours</li>
+                            <li>Indigenous community visits</li>
+                            <li>River expeditions</li>
+                            <li>Night jungle walks</li>
+                        </ul>
+                        <a href="#contact" class="cta-button">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-image">
+                        <div>Lima Culinary<br>& Cultural Journey</div>
+                    </div>
+                    <div class="package-content">
+                        <h3 class="package-title">Peru Foodie Adventure</h3>
+                        <div class="package-price">From $899</div>
+                        <ul class="package-features">
+                            <li>4 days / 3 nights</li>
+                            <li>World-class restaurant tours</li>
+                            <li>Cooking classes with chefs</li>
+                            <li>Local market discoveries</li>
+                            <li>Historic Lima exploration</li>
+                            <li>Pisco tasting experiences</li>
+                        </ul>
+                        <a href="#contact" class="cta-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="builder" class="interactive-builder section">
+        <div class="container">
+            <h2 class="section-title">Build Your Perfect Peru Adventure</h2>
+            <p class="section-subtitle">What kind of Peru experience speaks to your soul?</p>
+            
+            <div class="builder-options">
+                <div class="builder-option" onclick="selectOption('adventure')">
+                    <h3>🏔️ Adventure Seeker</h3>
+                    <p>Trekking, rafting, zip-lining through Peru's dramatic landscapes</p>
+                </div>
+                <div class="builder-option" onclick="selectOption('culture')">
+                    <h3>🏛️ Culture Explorer</h3>
+                    <p>Ancient ruins, local communities, traditional ceremonies</p>
+                </div>
+                <div class="builder-option" onclick="selectOption('luxury')">
+                    <h3>✨ Luxury Traveler</h3>
+                    <p>5-star lodges, private guides, exclusive experiences</p>
+                </div>
+                <div class="builder-option" onclick="selectOption('foodie')">
+                    <h3>🍽️ Culinary Journey</h3>
+                    <p>World-class dining, cooking classes, local food tours</p>
+                </div>
+                <div class="builder-option" onclick="selectOption('nature')">
+                    <h3>🦋 Nature Lover</h3>
+                    <p>Wildlife watching, rainforest, bird watching, conservation</p>
+                </div>
+                <div class="builder-option" onclick="selectOption('spiritual')">
+                    <h3>🧘 Spiritual Seeker</h3>
+                    <p>Sacred sites, meditation retreats, energy healing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title">Let's Plan Your Peru Adventure</h2>
+            <p class="section-subtitle">Ready to experience Peru through local eyes? Let's create something amazing together.</p>
+            
+            <form class="contact-form" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="travelers">Number of Travelers</label>
+                    <select id="travelers" name="travelers" required>
+                        <option value="">Select...</option>
+                        <option value="1">Solo traveler</option>
+                        <option value="2">Couple</option>
+                        <option value="3-5">Small group (3-5)</option>
+                        <option value="6+">Large group (6+)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="travel-dates">Preferred Travel Dates</label>
+                    <input type="text" id="travel-dates" name="travel-dates" placeholder="e.g., March 2025 or Flexible">
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget">Budget Range (per person)</label>
+                    <select id="budget" name="budget">
+                        <option value="">Select...</option>
+                        <option value="under-1000">Under $1,000</option>
+                        <option value="1000-2500">$1,000 - $2,500</option>
+                        <option value="2500-5000">$2,500 - $5,000</option>
+                        <option value="5000+">$5,000+</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interests">Tell me about your dream Peru experience</label>
+                    <textarea id="interests" name="interests" rows="4" placeholder="What excites you most about Peru? Any specific interests, concerns, or special requests?"></textarea>
+                </div>
+                
+                <button type="submit" class="cta-button">Get My Custom Itinerary</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Peru Travel Expert. Authentic journeys crafted with local expertise.</p>
+            <p>Email: contact@perutravelexpert.com | WhatsApp: +51 XXX XXX XXX</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Interactive builder
+        function selectOption(type) {
+            // Remove previous selections
+            document.querySelectorAll('.builder-option').forEach(option => {
+                option.style.background = 'rgba(255,255,255,0.1)';
+            });
+            
+            // Highlight selected option
+            event.target.closest('.builder-option').style.background = 'rgba(231, 76, 60, 0.3)';
+            
+            // Scroll to contact form
+            setTimeout(() => {
+                document.querySelector('#contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Pre-fill the interests field
+                const interestsField = document.getElementById('interests');
+                const messages = {
+                    adventure: "I'm interested in adventure activities like trekking, rafting, and exploring Peru's dramatic landscapes.",
+                    culture: "I want to dive deep into Peru's culture - ancient ruins, local communities, and traditional experiences.",
+                    luxury: "I'm looking for a luxury Peru experience with premium accommodation and exclusive access.",
+                    foodie: "I'm passionate about Peruvian cuisine and want to experience the best food Peru has to offer.",
+                    nature: "I'm a nature lover interested in wildlife, the Amazon rainforest, and conservation experiences.",
+                    spiritual: "I'm seeking spiritual experiences at sacred sites and want to connect with Peru's mystical side."
+                };
+                
+                interestsField.value = messages[type] || "";
+                interestsField.focus();
+            }, 500);
+        }
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.name || !data.email) {
+                alert('Please fill in your name and email address.');
+                return;
+            }
+            
+            // Show success message
+            alert('Thank you! I\'ll get back to you within 24 hours with a personalized Peru itinerary proposal.');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0,0,0,0.95)';
+            } else {
+                nav.style.background = 'rgba(0,0,0,0.9)';
+            }
+        });
+    </script>
+</body>
+</html>
